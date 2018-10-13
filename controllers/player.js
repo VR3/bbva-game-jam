@@ -47,7 +47,6 @@ exports.getPlayer = (req, res, next) => {
         })
         .exec()
         .then((playerObjects) => {
-          console.log(playerObjects);
           res.render('admin/players/profile', {
             title: 'Jugadores',
             player,
