@@ -1,0 +1,25 @@
+.sidebar(data-color='white', data-active-color='danger')
+  .logo
+    a.simple-text.logo-normal(href='/dashboard') Game Jam
+  .sidebar-wrapper
+    ul.nav
+      li(class=(title === 'Dashboard' ? 'active' : ''))
+        a(href='/animales')
+          i.nc-icon.nc-bank
+          p Dashboard
+      li(class=(title === 'Animales' ? 'active' : ''))
+        a(href='/animales')
+          i.nc-icon.nc-globe-2
+          p Animales
+      li(class=(title === 'Sucursales' ? 'active' : ''))
+        a(href='/sucursales')
+          i.nc-icon.nc-compass-05
+          p Sucursales
+      li(class=(title === 'Jugadores' ? 'active' : ''))
+        a(href='/jugadores')
+          i.nc-icon.nc-controller-modern
+          p Jugadores
+      li(class=(title === 'Hábitats' ? 'active' : ''))
+        a(href='/habitats')
+          i.nc-icon.nc-world-2
+          p Hábitats

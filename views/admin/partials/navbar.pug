@@ -1,0 +1,30 @@
+// Navbar
+nav.navbar.navbar-expand-lg.navbar-absolute.fixed-top.navbar-transparent
+  .container-fluid
+    .navbar-wrapper
+      .navbar-toggle
+        button.navbar-toggler(type='button')
+          span.navbar-toggler-bar.bar1
+          span.navbar-toggler-bar.bar2
+          span.navbar-toggler-bar.bar3
+      a.navbar-brand(href='#pablo') #{title}
+    button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navigation', aria-controls='navigation-index', aria-expanded='false', aria-label='Toggle navigation')
+      span.navbar-toggler-bar.navbar-kebab
+      span.navbar-toggler-bar.navbar-kebab
+      span.navbar-toggler-bar.navbar-kebab
+    #navigation.collapse.navbar-collapse.justify-content-end
+      ul.navbar-nav
+        li.nav-item
+          a.nav-link.btn-magnify(href='#pablo')
+            i.nc-icon.nc-layout-11
+            p
+              span.d-lg-none.d-md-block Volver a Dashboard
+        li.nav-item.btn-rotate.dropdown
+          a#navbarDropdownMenuLink.nav-link.dropdown-toggle(href='http://example.com', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
+            i.nc-icon.nc-settings-gear-65
+            p
+              span.d-lg-none.d-md-block Mi cuenta
+          .dropdown-menu.dropdown-menu-right(aria-labelledby='navbarDropdownMenuLink')
+            a.dropdown-item(href='#') Perfil
+            a.dropdown-item(href='#') Cerrar Sesión
+// End Navbar
