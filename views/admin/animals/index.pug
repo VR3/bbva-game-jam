@@ -30,7 +30,7 @@ block content
                   td=animal.description
                   td=animal.habitat.name
                   td.text-right
-                    a.btn.btn-warning.btn-link.btn-icon.btn-sm.edit(href=`/animals/${animal.id}/edit`)
+                    a.btn.btn-warning.btn-link.btn-icon.edit(href=`/animals/${animal.id}/edit`)
                       i.fa.fa-edit
-                    a.btn.btn-danger.btn-link.btn-icon.btn-sm.remove(href=`/animals/${animal.id}/delete`, onClick="return confirm('¿En verdad deseas eliminar este animal?');")
+                    a.btn.btn-danger.btn-link.btn-icon.remove(href=`/animals/${animal.id}/delete`, onClick="return confirm('¿En verdad deseas eliminar este animal?');")
                       i.fa.fa-times

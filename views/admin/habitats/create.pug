@@ -6,6 +6,7 @@ block content
       .card.card-user
         .card-header
           h5.card-title Registrar nuevo Hábitat
+          a.btn.btn-info(href="/habitats") Regresar
         .card-body
           form(method="POST", action='/habitats')
             input(type='hidden', name='_csrf', value=_csrf)

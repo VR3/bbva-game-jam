@@ -27,7 +27,7 @@ block content
                   td=habitat.name
                   td=habitat.description
                   td.text-right
-                    a.btn.btn-warning.btn-link.btn-icon.btn-sm.edit(href=`/habitats/${habitat.id}/edit`)
+                    a.btn.btn-warning.btn-link.btn-icon.edit(href=`/habitats/${habitat.id}/edit`)
                       i.fa.fa-edit
-                    a.btn.btn-danger.btn-link.btn-icon.btn-sm.remove(href=`/habitats/${habitat.id}/delete`, onClick="return confirm('¿En verdad deseas eliminar este hábitat?');")
+                    a.btn.btn-danger.btn-link.btn-icon.remove(href=`/habitats/${habitat.id}/delete`, onClick="return confirm('¿En verdad deseas eliminar este hábitat?');")
                       i.fa.fa-times

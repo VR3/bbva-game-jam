@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-12
+      .card.card-user
+        .card-header
+          h5.card-title Editar una Sucursal Bancaria
+          a.btn.btn-info(href="/branches") Regresar
+        .card-body
+          form(method="POST", action=`/branches/${branch.id}/update`)
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label(for="habitatSelect") Hábitat de la Sucursal
+                  select.form-control(name="habitat", required)
+                    option(disabled='') Selecciona un hábitat...
+                    for habitat in habitats
+                      option(value=habitat.id, selected=(habitat.id == branch.habitat))=habitat.name
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Latitud
+                  input.form-control(type='number', name="lat", required, step="0.0000001", value=branch.loc.coordinates[1])
+              .col-md-6
+                .form-group
+                  label Longitud
+                  input.form-control(type='number', name="long", required, step="0.0000001", value=branch.loc.coordinates[0])
+            .row
+              .update.ml-auto.mr-auto
+                button.btn.btn-primary.btn-round(type='submit') Actualizar Sucursal

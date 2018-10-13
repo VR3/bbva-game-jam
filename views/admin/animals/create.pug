@@ -6,6 +6,7 @@ block content
       .card.card-user
         .card-header
           h5.card-title Registrar nuevo Animal
+          a.btn.btn-info(href="/animals") Regresar
         .card-body
           form(method="POST", action='/animals')
             input(type='hidden', name='_csrf', value=_csrf)

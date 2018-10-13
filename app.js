@@ -29,12 +29,14 @@ dotenv.load({ path: '.env' });
 /**
  * Controllers (route handlers).
  */
+const apiController = require('./controllers/api');
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const dashboardController = require('./controllers/dashboard');
 const habitatController = require('./controllers/habitat');
 const animalController = require('./controllers/animal');
+const branchController = require('./controllers/branch');
 
 /**
  * API keys and Passport configuration.
@@ -166,9 +168,19 @@ app.post('/animals', passportConfig.isAuthenticated, animalController.storeAnima
 app.get('/animals/:id/edit', passportConfig.isAuthenticated, animalController.editAnimal);
 app.post('/animals/:id/update', passportConfig.isAuthenticated, animalController.updateAnimal);
 app.get('/animals/:id/delete', passportConfig.isAuthenticated, animalController.deleteAnimal);
+// Branches
+app.get('/branches', passportConfig.isAuthenticated, branchController.indexBranches);
+app.get('/branches/create', passportConfig.isAuthenticated, branchController.createBranch);
+app.post('/branches', passportConfig.isAuthenticated, branchController.storeBranch);
+app.get('/branches/:id/edit', passportConfig.isAuthenticated, branchController.editBranch);
+app.post('/branches/:id/update', passportConfig.isAuthenticated, branchController.updateBranch);
+app.get('/branches/:id/delete', passportConfig.isAuthenticated, branchController.deleteBranch);
+
 /**
  * API Routes
  */
+app.get('/api/ping', (req, res) => res.send('pong'));
+app.post('/api/branches-nearby', apiController.getBranchLocations);
 
 /**
  * Error Handler.
