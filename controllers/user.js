@@ -43,8 +43,8 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
-      req.flash('success', { msg: '¡Hola de nuevo! Te extrañamos' });
-      res.redirect(req.session.returnTo || '/');
+      req.flash('success', { msg: '¡Hola de nuevo! Te extrañamos este tiempo :(' });
+      res.redirect(req.session.returnTo || '/dashboard');
     });
   })(req, res, next);
 };
@@ -109,7 +109,7 @@ exports.postSignup = (req, res, next) => {
         if (err) {
           return next(err);
         }
-        res.redirect('/');
+        res.redirect('/dashboard');
       });
     });
   });

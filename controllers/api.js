@@ -1,4 +1,97 @@
 const Branch = require('../models/Branch');
+const Player = require('../models/Player');
+
+/**
+ * POST /api/player/signup
+ * Register a new player in the game
+ */
+exports.playerSignup = (req, res) => {
+  // Validation
+  req.assert('fname', 'Necesitamos tu(s) nombre(s)').notEmpty();
+  req.assert('lname', 'Necesitamos tu(s) apellido(s)').notEmpty();
+  req.assert('email', 'La dirección de correo electrónico es obligatoria').notEmpty();
+  req.assert('password', 'La contraseña es obligatoria').notEmpty();
+
+  const errors = req.validationErrors();
+
+  if (errors) {
+    return res.json({
+      status: 'fail',
+      payload: errors,
+    });
+  }
+  Player.findOne({ email: req.body.email })
+    .exec()
+    .then((usedEmail) => {
+      if (usedEmail) {
+        return res.json({
+          status: 'fail',
+          payload: [{ msg: 'Ese correo electrónico ya está asociado a una cuenta existente' }],
+        });
+      }
+      const newPlayer = new Player(req.body);
+      return newPlayer.save().then(savedPlayer => res.json({
+        status: 'success',
+        payload: savedPlayer,
+      }));
+    })
+    .catch(err => res.status(500).json({
+      status: 'error',
+      error: err,
+    }));
+};
+
+/**
+ * POST /api/player/login
+ * LogIn an existing Player into the game
+ */
+exports.playerLogin = (req, res) => {
+  // Validation
+  req.assert('email', 'Ingresa un correo electrónico válido').notEmpty();
+  req.assert('password', 'Ingresa tu contraseña').notEmpty();
+
+  const errors = req.validationErrors();
+
+  if (errors) {
+    return res.json({
+      status: 'fail',
+      payload: errors,
+    });
+  }
+
+  Player.findOne({ email: req.body.email })
+    .exec()
+    .then((foundPlayer) => {
+      if (!foundPlayer) {
+        return res.json({
+          status: 'fail',
+          payload: [{ msg: 'No existe ninguna cuenta asociada a ese correo electrónico ' }],
+        });
+      }
+      return foundPlayer.comparePassword(req.body.password, (err, isMatch) => {
+        if (err) {
+          res.status(500).json({
+            status: 'error',
+            error: err,
+          });
+        }
+        if (isMatch) {
+          return res.json({
+            status: 'success',
+            payload: foundPlayer,
+          });
+        }
+        return res.json({
+          status: 'fail',
+          payload: [{ msg: 'Correo y/o contraseña inválidos' }],
+        });
+      });
+    })
+    .catch(err => res.status(500).json({
+      status: 'error',
+      error: err,
+    }));
+};
 
 /**
  * POST /api/branches-nearby

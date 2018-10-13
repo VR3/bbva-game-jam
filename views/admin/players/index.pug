@@ -1,0 +1,35 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-12
+      .card
+        .card-header
+          h4.card-title Jugadores
+        .card-body
+          .toolbar
+            // Here you can write extra buttons/actions for the toolbar
+          table#datatable.table.table-striped.table-bordered(cellspacing='0', width='100%')
+            thead
+              tr
+                th Nombre(s)
+                th Apellido(s)
+                th Correo Electrónico
+                th.disabled-sorting.text-right Acciones
+            tfoot
+              tr
+                th Nombre(s)
+                th Apellido(s)
+                th Correo Electrónico
+                th.disabled-sorting.text-right Acciones
+            tbody
+              for player in players
+                tr
+                  td=player.fname
+                  td=player.lname
+                  td=player.email
+                  td.text-right
+                    a.btn.btn-info.btn-link.btn-icon.edit(href=`/players/${player.id}`)
+                      i.fa.fa-eye
+                    a.btn.btn-danger.btn-link.btn-icon.remove(href=`/players/${player.id}/delete`, onClick="return confirm('¿En verdad deseas eliminar este jugador?');")
+                      i.fa.fa-times

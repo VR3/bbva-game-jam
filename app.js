@@ -37,6 +37,7 @@ const dashboardController = require('./controllers/dashboard');
 const habitatController = require('./controllers/habitat');
 const animalController = require('./controllers/animal');
 const branchController = require('./controllers/branch');
+const playerController = require('./controllers/player');
 
 /**
  * API keys and Passport configuration.
@@ -94,7 +95,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
+  if (/api/.test(req.path)) {
     next();
   } else {
     lusca.csrf()(req, res, next);
@@ -175,12 +176,17 @@ app.post('/branches', passportConfig.isAuthenticated, branchController.storeBran
 app.get('/branches/:id/edit', passportConfig.isAuthenticated, branchController.editBranch);
 app.post('/branches/:id/update', passportConfig.isAuthenticated, branchController.updateBranch);
 app.get('/branches/:id/delete', passportConfig.isAuthenticated, branchController.deleteBranch);
+// Players
+app.get('/players', passportConfig.isAuthenticated, playerController.getIndex);
+app.get('/players/:id', passportConfig.isAuthenticated, playerController.getPlayer);
 
 /**
  * API Routes
  */
 app.get('/api/ping', (req, res) => res.send('pong'));
 app.post('/api/branches-nearby', apiController.getBranchLocations);
+app.post('/api/players/signup', apiController.playerSignup);
+app.post('/api/players/login', apiController.playerLogin);
 
 /**
  * Error Handler.

@@ -1,0 +1,91 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-6
+      .card
+        .card-body
+          .author
+            a(href='#')
+              h5.title=player.fname+' '+player.lname
+            p.text-center
+              | Correo Electrónico:
+              a(href='mailto:'+player.email)='  '+player.email
+          p.text-center Fecha de Registro: #{player.createdAt.getDate()+'-'+(player.createdAt.getMonth()+1)+'-'+player.createdAt.getFullYear()}
+        .card-footer
+          hr
+          .button-container
+            .row
+              .col-lg-3.col-md-6.col-6.ml-auto
+                h5
+                  | 80
+                  br
+                  small Animales Rescatados
+              .col-lg-4.col-md-6.col-6.ml-auto.mr-auto
+                h5
+                  | 32
+                  br
+                  small Animales en la Mochila
+              .col-lg-3.mr-auto
+                h5
+                  | 130
+                  br
+                  small Animales Perdidos
+    .col-md-6
+      .card
+        .card-header
+          h5.card-title Desempeño del Jugador
+          p.card-category Análisis de los últimos 30 días
+        .card-body
+          canvas#chartHours(width='400', height='100')
+        .card-footer
+          hr
+          .stats
+            i.fa.fa-history
+            |  Actualizada hace 15 minutos
+  .row
+    .col-md-12
+      .card
+        .card-header
+          h4.card-title Animales en la Mochila
+        .card-body
+          .toolbar
+            // Here you can write extra buttons/actions for the toolbar
+          table#datatable.table.table-striped.table-bordered(cellspacing='0', width='100%')
+            thead
+              tr
+                th Nombre
+                th Sucursal de Recolección
+                th Hábitat Destino
+                th Tiempo Restante
+            tfoot
+              tr
+                th Nombre
+                th Sucursal de Recolección
+                th Hábitat de Destino
+                th Tiempo Restante
+            tbody
+              tr
+                td Iguana
+                td Sucursal Benito Juárez
+                td Tropical
+                td 72 horas
+              tr
+                td Ratón
+                td Sucursal Benito Juárez
+                td Tropical
+                td 72 horas
+              tr
+                td Elefante
+                td Sucursal Benito Juárez
+                td Tropical
+                td 72 horas
+              tr
+                td Jirafa
+                td Sucursal Benito Juárez
+                td Tropical
+                td 72 horas
+  script.
+    $(document).ready(() => {
+      demo.initChartsPages();
+    });

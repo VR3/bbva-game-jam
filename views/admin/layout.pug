@@ -17,18 +17,6 @@ html(lang='en')
     link(href='/admin/demo/demo.css', rel='stylesheet')
     // DataTables
     link(href='https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css', rel="stylesheet")
-  body
-    .wrapper
-      include partials/sidebar
-      .main-panel
-        include partials/navbar
-        //
-          <div class="panel-header panel-header-lg">
-          <canvas id="bigDashboardChart"></canvas>
-          </div>
-        .content
-          block content
-        include partials/footer
     // Core JS Files
     script(src='/admin/js/core/jquery.min.js')
     script(src='/admin/js/core/popper.min.js')
@@ -46,6 +34,18 @@ html(lang='en')
     script(src='/admin/demo/demo.js')
     // DataTables
     script(src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js")
+  body
+    .wrapper
+      include partials/sidebar
+      .main-panel
+        include partials/navbar
+        //
+          <div class="panel-header panel-header-lg">
+          <canvas id="bigDashboardChart"></canvas>
+          </div>
+        .content
+          block content
+        include partials/footer
     include partials/flash
     script.
       $(document).ready(function() {
