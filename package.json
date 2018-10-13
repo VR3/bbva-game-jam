@@ -1,12 +1,12 @@
 {
-  "name": "hackathon-starter",
-  "version": "5.1.1",
-  "description": "A boilerplate for Node.js web applications",
+  "name": "bbva-game-jam",
+  "version": "1.0.0",
+  "description": "Backend and Admin Panel for our project for the BBVA Game Jam",
   "repository": {
     "type": "git",
-    "url": "https://github.com/sahat/hackathon-starter.git"
+    "url": "https://github.com/VR3/bbva-game-jam"
   },
-  "author": "Sahat Yalkabov",
+  "author": "VR3",
   "license": "MIT",
   "scripts": {
     "postinstall": "npm rebuild node-sass",
@@ -47,6 +47,7 @@
     "node-sass": "^4.9.3",
     "node-sass-middleware": "^0.11.0",
     "nodemailer": "^4.6.8",
+    "paper-dashboard-2": "^2.0.0",
     "passport": "^0.4.0",
     "passport-facebook": "^2.1.1",
     "passport-github": "^1.1.0",
