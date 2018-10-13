@@ -16,12 +16,14 @@ block content
                 th Habitat
                 th Latitud
                 th Longitud
+                th Capacidad
                 th.disabled-sorting.text-right Acciones
             tfoot
               tr
                 th Habitat
                 th Latitud
                 th Longitud
+                th Capacidad
                 th.disabled-sorting.text-right Acciones
             tbody
               for branch in branches
@@ -29,6 +31,7 @@ block content
                   td=branch.habitat.name
                   td=branch.loc.coordinates[1]
                   td=branch.loc.coordinates[0]
+                  td=branch.capacity
                   td.text-right
                     a.btn.btn-warning.btn-link.btn-icon.btn-sm.edit(href=`/branches/${branch.id}/edit`)
                       i.fa.fa-edit
