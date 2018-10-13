@@ -1,0 +1,24 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-12
+      .card.card-user
+        .card-header
+          h5.card-title Editar un Hábitat
+        .card-body
+          form(method="POST", action=`/habitats/${habitat.id}/update`)
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Nombre
+                  input.form-control(type='text', name="name", placeholder='Hábitat increíble', value=habitat.name)
+            .row
+              .col-md-12
+                .form-group
+                  label Descripción
+                  textarea.form-control.textarea(name="description", placeholder='Este es un hábitat súper padre porque tiene animales y muchas especies endémicas y así')=habitat.description
+            .row
+              .update.ml-auto.mr-auto
+                button.btn.btn-primary.btn-round(type='submit') Actualizar Hábitat

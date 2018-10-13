@@ -149,8 +149,15 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
 /**
  * Admin Routes
  */
+// Dashboard
 app.get('/dashboard', passportConfig.isAuthenticated, dashboardController.getDashboard);
+// Habitats
 app.get('/habitats', passportConfig.isAuthenticated, habitatController.indexHabitats);
+app.get('/habitats/create', passportConfig.isAuthenticated, habitatController.createHabitat);
+app.post('/habitats', passportConfig.isAuthenticated, habitatController.storeHabitat);
+app.get('/habitats/:id/edit', passportConfig.isAuthenticated, habitatController.editHabitat);
+app.post('/habitats/:id/update', passportConfig.isAuthenticated, habitatController.updateHabitat);
+app.get('/habitats/:id/delete', passportConfig.isAuthenticated, habitatController.deleteHabitat);
 
 /**
  * API Routes
