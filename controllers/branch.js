@@ -43,6 +43,7 @@ exports.storeBranch = (req, res, next) => {
   req.assert('habitat', 'Es necesario el hábitat de la sucursal').notEmpty();
   req.assert('lat', 'Es necesaria la latitud de la sucursal').notEmpty();
   req.assert('long', 'Es necesaria la longitud de la sucursal').notEmpty();
+  req.assert('capacity', 'La capacidad de animales de la sucursal es necesaria').notEmpty();
 
   const errors = req.validationErrors();
 
@@ -53,6 +54,7 @@ exports.storeBranch = (req, res, next) => {
 
   const newBranch = new Branch({
     habitat: req.body.habitat,
+    capacity: req.body.capacity,
     loc: {
       type: 'Point',
       coordinates: [Number(req.body.long), Number(req.body.lat)],
@@ -97,6 +99,7 @@ exports.updateBranch = (req, res, next) => {
   req.assert('habitat', 'Es necesario el hábitat de la sucursal').notEmpty();
   req.assert('lat', 'Es necesaria la latitud de la sucursal').notEmpty();
   req.assert('long', 'Es necesaria la longitud de la sucursal').notEmpty();
+  req.assert('capacity', 'La capacidad de animales de la sucursal es necesaria').notEmpty();
 
   const errors = req.validationErrors();
 
@@ -107,6 +110,7 @@ exports.updateBranch = (req, res, next) => {
 
   const update = {
     habitat: req.body.habitat,
+    capacity: req.body.capacity,
     loc: {
       type: 'Point',
       coordinates: [Number(req.body.long), Number(req.body.lat)],
