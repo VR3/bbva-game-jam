@@ -1,0 +1,33 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-12
+      .card
+        .card-header
+          h4.card-title Hábitats
+        .card-body
+          .toolbar
+            // Here you can write extra buttons/actions for the toolbar
+            a.btn.btn-success(href="/habitats/create") Agregar Hábitat
+          table#datatable.table.table-striped.table-bordered(cellspacing='0', width='100%')
+            thead
+              tr
+                th Nombre
+                th Descripción
+                th.disabled-sorting.text-right Acciones
+            tfoot
+              tr
+                th Nombre
+                th Descripción
+                th.disabled-sorting.text-right Acciones
+            tbody
+              for habitat in habitats
+                tr
+                  td=habitat.name
+                  td=habitat.description
+                  td.text-right
+                    a.btn.btn-warning.btn-link.btn-icon.btn-sm.edit(href=`/habitats/${habitat.id}/edit`)
+                      i.fa.fa-edit
+                    a.btn.btn-danger.btn-link.btn-icon.btn-sm.remove(href=`/habitats/${habitat.id}/delete`, onClick="return confirm('¿En verdad deseas eliminar este hábitat?');")
+                      i.fa.fa-times

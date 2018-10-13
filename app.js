@@ -33,6 +33,7 @@ const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const dashboardController = require('./controllers/dashboard');
+const habitatController = require('./controllers/habitat');
 
 /**
  * API keys and Passport configuration.
@@ -149,6 +150,7 @@ app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userControl
  * Admin Routes
  */
 app.get('/dashboard', passportConfig.isAuthenticated, dashboardController.getDashboard);
+app.get('/habitats', passportConfig.isAuthenticated, habitatController.indexHabitats);
 
 /**
  * API Routes
