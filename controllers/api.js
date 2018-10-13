@@ -151,11 +151,11 @@ exports.getAnimalsBranches = (req, res) => {
     .populate('branch')
     .exec()
     .then((animals) => {
-      if (animals.length < animals[0].branch.capacity) {
+      if (animals.length < 1 || animals.length < animals[0].branch.capacity) {
         Animal.find({})
           .exec()
           .then((animalsCatalog) => {
-            for (let i = animals.length; i < animals[0].capacity; i++) {
+            for (let i = animals.length; i < 5; i++) {
               const newAnimalBranch = new AnimalBranch({
                 branch: req.params.id,
                 animal: faker.random.arrayElement(animalsCatalog),
@@ -172,7 +172,7 @@ exports.getAnimalsBranches = (req, res) => {
     })
     .catch(err => res.status(500).json({
       status: 'error',
-      error: err,
+      error: `Error: ${err}`,
     }));
 };
 

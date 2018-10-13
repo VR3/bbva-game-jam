@@ -190,7 +190,7 @@ app.post('/api/players/login', apiController.playerLogin);
 app.get('/api/branches/:id/animals', apiController.getAnimalsBranches);
 app.post('/api/bag/add-animal', apiController.addAnimalToBag);
 app.post('/api/bag', apiController.getBag);
-app.post('/api/animal-release', apiController.releaseAnimalInBranch);
+app.post('/api/animal-release/:id', apiController.releaseAnimalInBranch);
 
 /**
  * Error Handler.
