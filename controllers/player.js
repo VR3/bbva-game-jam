@@ -34,19 +34,26 @@ exports.getPlayer = (req, res, next) => {
           path: 'animalBranch',
           populate: {
             path: 'branch',
-            populate: 'habitat',
+            populate: {
+              path: 'habitat',
+            },
           },
         })
         .populate({
           path: 'animalBranch',
-          populate: 'animal',
+          populate: {
+            path: 'animal',
+          },
         })
         .exec()
-        .then(playerObjects => res.render('admin/players/profile', {
-          title: 'Jugadores',
-          player,
-          playerObjects,
-        }));
+        .then((playerObjects) => {
+          console.log(playerObjects);
+          res.render('admin/players/profile', {
+            title: 'Jugadores',
+            player,
+            playerObjects,
+          });
+        });
     })
     .catch(err => next(err));
 };
