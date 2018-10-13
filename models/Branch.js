@@ -9,6 +9,7 @@ const branchSchema = new mongoose.Schema({
     type: { type: String },
     coordinates: [],
   },
+  capacity: Number,
 }, { timestamps: true });
 
 /**

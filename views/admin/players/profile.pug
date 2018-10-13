@@ -18,14 +18,14 @@ block content
             .row
               .col-lg-3.col-md-6.col-6.ml-auto
                 h5
-                  | 80
+                  =(playerObjects.length)
                   br
-                  small Animales Rescatados
+                  small Animales en la Mochila
               .col-lg-4.col-md-6.col-6.ml-auto.mr-auto
                 h5
                   | 32
                   br
-                  small Animales en la Mochila
+                  small Animales Rescatados
               .col-lg-3.mr-auto
                 h5
                   | 130
@@ -57,34 +57,20 @@ block content
                 th Nombre
                 th Sucursal de Recolección
                 th Hábitat Destino
-                th Tiempo Restante
+                th Fecha en que se recogió
             tfoot
               tr
                 th Nombre
                 th Sucursal de Recolección
                 th Hábitat de Destino
-                th Tiempo Restante
+                th Fecha en que se recogió
             tbody
-              tr
-                td Iguana
-                td Sucursal Benito Juárez
-                td Tropical
-                td 72 horas
-              tr
-                td Ratón
-                td Sucursal Benito Juárez
-                td Tropical
-                td 72 horas
-              tr
-                td Elefante
-                td Sucursal Benito Juárez
-                td Tropical
-                td 72 horas
-              tr
-                td Jirafa
-                td Sucursal Benito Juárez
-                td Tropical
-                td 72 horas
+              for animal in playerObjects
+                tr
+                  td=animal.animalBranch.animal.name
+                  td=animal.animalBranch.branch._id
+                  td=animal.animalBranch.branch.habitat.name
+                  td=animal.createdAt.getDate()+'-'+animal.createdAt.getMonth()+'-'+animal.createdAt.getFullYear()
   script.
     $(document).ready(() => {
       demo.initChartsPages();

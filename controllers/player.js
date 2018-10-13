@@ -1,4 +1,5 @@
 const Player = require('../models/Player');
+const Bag = require('../models/Bag');
 
 /**
  * GET /players
@@ -28,10 +29,24 @@ exports.getPlayer = (req, res, next) => {
         req.flash('errors', { msg: 'El jugador que buscas no existe' });
         return res.redirect('/players');
       }
-      return res.render('admin/players/profile', {
-        title: 'Jugadores',
-        player,
-      });
+      Bag.find({ player })
+        .populate({
+          path: 'animalBranch',
+          populate: {
+            path: 'branch',
+            populate: 'habitat',
+          },
+        })
+        .populate({
+          path: 'animalBranch',
+          populate: 'animal',
+        })
+        .exec()
+        .then(playerObjects => res.render('admin/players/profile', {
+          title: 'Jugadores',
+          player,
+          playerObjects,
+        }));
     })
     .catch(err => next(err));
 };

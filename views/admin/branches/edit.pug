@@ -28,5 +28,10 @@ block content
                   label Longitud
                   input.form-control(type='number', name="long", required, step="0.0000001", value=branch.loc.coordinates[0])
             .row
+              .col-md-6.pr-1
+                .form-group
+                  label Cantidad de Animales que debe haber en la sucursal
+                  input.form-control(type='number', name="capacity", step="1", required, value=branch.capacity)
+            .row
               .update.ml-auto.mr-auto
                 button.btn.btn-primary.btn-round(type='submit') Actualizar Sucursal

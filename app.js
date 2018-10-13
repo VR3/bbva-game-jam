@@ -187,6 +187,10 @@ app.get('/api/ping', (req, res) => res.send('pong'));
 app.post('/api/branches-nearby', apiController.getBranchLocations);
 app.post('/api/players/signup', apiController.playerSignup);
 app.post('/api/players/login', apiController.playerLogin);
+app.get('/api/branches/:id/animals', apiController.getAnimalsBranches);
+app.post('/api/bag/add-animal', apiController.addAnimalToBag);
+app.post('/api/bag', apiController.getBag);
+app.post('/api/animal-release', apiController.releaseAnimalInBranch);
 
 /**
  * Error Handler.
