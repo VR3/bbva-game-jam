@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+  .row
+    .col-md-12
+      .card.card-user
+        .card-header
+          h5.card-title Editar un Animal
+          a.btn.btn-info(href="/animals") Regresar
+        .card-body
+          form(method="POST", action=`/animals/${animal.id}/update`)
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Nombre
+                  input.form-control(type='text', name="name", placeholder='Animal increíble', value=animal.name)
+              .col-md-6
+                .form-group
+                  label(for="habitatSelect") Hábitat del Animal
+                  select.form-control(name="habitat", required)
+                    option(disabled='') Selecciona un hábitat...
+                    for habitat in habitats
+                      option(value=habitat.id, selected=(animal.habitat == habitat.id))=habitat.name
+            .row
+              .col-md-12
+                .form-group
+                  label Descripción
+                  textarea.form-control.textarea(name="description", placeholder='Este es un animal súper padre porque tiene animales y muchas especies endémicas y así')=animal.description
+            .row
+              .update.ml-auto.mr-auto
+                button.btn.btn-primary.btn-round(type='submit') Actualizar Animal

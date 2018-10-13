@@ -34,6 +34,7 @@ const userController = require('./controllers/user');
 const contactController = require('./controllers/contact');
 const dashboardController = require('./controllers/dashboard');
 const habitatController = require('./controllers/habitat');
+const animalController = require('./controllers/animal');
 
 /**
  * API keys and Passport configuration.
@@ -158,7 +159,13 @@ app.post('/habitats', passportConfig.isAuthenticated, habitatController.storeHab
 app.get('/habitats/:id/edit', passportConfig.isAuthenticated, habitatController.editHabitat);
 app.post('/habitats/:id/update', passportConfig.isAuthenticated, habitatController.updateHabitat);
 app.get('/habitats/:id/delete', passportConfig.isAuthenticated, habitatController.deleteHabitat);
-
+// Animals
+app.get('/animals', passportConfig.isAuthenticated, animalController.indexAnimals);
+app.get('/animals/create', passportConfig.isAuthenticated, animalController.createAnimal);
+app.post('/animals', passportConfig.isAuthenticated, animalController.storeAnimal);
+app.get('/animals/:id/edit', passportConfig.isAuthenticated, animalController.editAnimal);
+app.post('/animals/:id/update', passportConfig.isAuthenticated, animalController.updateAnimal);
+app.get('/animals/:id/delete', passportConfig.isAuthenticated, animalController.deleteAnimal);
 /**
  * API Routes
  */
