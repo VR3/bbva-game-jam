@@ -7,7 +7,7 @@ const nodemailer = require('nodemailer');
 exports.getContact = (req, res) => {
   const unknownUser = !(req.user);
 
-  res.render('admin/dashboard', {
+  res.render('contact', {
     title: 'Contact',
     unknownUser,
   });

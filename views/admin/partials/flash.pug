@@ -1,0 +1,52 @@
+
+if messages.errors
+  for error in messages.errors
+    script.
+      $(document).ready(() => {
+        $.notify({
+          icon: "nc-icon nc-bell-55",
+          message: "#{error.msg}"
+
+        }, {
+          type: 'danger',
+          timer: 8000,
+          placement: {
+            from: 'top',
+            align: 'right'
+          }
+        });
+      });
+if messages.info
+  for info in messages.info
+    script.
+      $(document).ready(() => {
+        $.notify({
+          icon: "nc-icon nc-bell-55",
+          message: "#{info.msg}"
+
+        }, {
+          type: 'info',
+          timer: 8000,
+          placement: {
+            from: 'top',
+            align: 'right'
+          }
+        });
+      });
+if messages.success
+  for success in messages.success
+    script.
+      $(document).ready(() => {
+        $.notify({
+          icon: "nc-icon nc-bell-55",
+          message: "#{success.msg}"
+
+        }, {
+          type: 'success',
+          timer: 8000,
+          placement: {
+            from: 'top',
+            align: 'right'
+          }
+        });
+      });
