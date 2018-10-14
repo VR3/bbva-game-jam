@@ -177,6 +177,7 @@ app.post('/branches', passportConfig.isAuthenticated, branchController.storeBran
 app.get('/branches/:id/edit', passportConfig.isAuthenticated, branchController.editBranch);
 app.post('/branches/:id/update', passportConfig.isAuthenticated, branchController.updateBranch);
 app.get('/branches/:id/delete', passportConfig.isAuthenticated, branchController.deleteBranch);
+app.get('/branches/seed', branchController.seed);
 // Players
 app.get('/players', passportConfig.isAuthenticated, playerController.getIndex);
 app.get('/players/:id', passportConfig.isAuthenticated, playerController.getPlayer);

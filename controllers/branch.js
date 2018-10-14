@@ -1,3 +1,4 @@
+const faker = require('faker');
 const Branch = require('../models/Branch');
 const Habitat = require('../models/Habitat');
 
@@ -146,4 +147,24 @@ exports.deleteBranch = (req, res, next) => {
       return res.redirect('/branches');
     })
     .catch(err => next(err));
+};
+
+exports.seed = (req, res, next) => {
+  Habitat.find({})
+    .exec()
+    .then((habitats) => {
+      for (let index = 0; index < 1795; index++) {
+        const element = new Branch({
+          habitat: faker.random.arrayElement(habitats),
+          loc: {
+            type: 'Point',
+            coordinates: [Number(faker.random.number({ min: -99.1820485, max: -95.1820485 })), Number(faker.random.number({ min: 19.4255024, max: 19.6255024 }))],
+          },
+          capacity: faker.random.number({ min: 5, max: 50 }),
+        });
+        element.save();
+      }
+    })
+    .catch(err => next(err));
+  res.redirect('/branches');
 };
