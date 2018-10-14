@@ -43,8 +43,8 @@ exports.postLogin = (req, res, next) => {
     }
     req.logIn(user, (err) => {
       if (err) { return next(err); }
-      req.flash('success', { msg: '¡Hola de nuevo! Te extrañamos este tiempo :(' });
-      res.redirect(req.session.returnTo || '/dashboard');
+      req.flash('success', { msg: '¡Hola de nuevo!' });
+      res.redirect('/dashboard');
     });
   })(req, res, next);
 };

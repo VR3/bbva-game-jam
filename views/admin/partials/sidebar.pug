@@ -1,11 +1,11 @@
 .sidebar(data-color='white', data-active-color='danger')
-  .logo
-    a.simple-text.logo-normal(href='/dashboard') Game Controller · VR3
+  .logo.text-center
+    a.simple-text.logo-normal(href='/dashboard') Finimals Controller
   .sidebar-wrapper
     ul.nav
       li(class=(title === 'Dashboard' ? 'active' : ''))
         a(href='/dashboard')
-          i.nc-icon.nc-bank
+          i.nc-icon.nc-layout-11
           p Dashboard
       li(class=(title === 'Animales' ? 'active' : ''))
         a(href='/animals')
@@ -23,3 +23,8 @@
         a(href='/habitats')
           i.nc-icon.nc-world-2
           p Hábitats
+      hr
+      li(class=(title === 'Configuración' ? 'active' : ''))
+        a(href='/configuration')
+          i.nc-icon.nc-settings-gear-65
+          p Configuración

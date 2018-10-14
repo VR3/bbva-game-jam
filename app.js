@@ -38,6 +38,7 @@ const habitatController = require('./controllers/habitat');
 const animalController = require('./controllers/animal');
 const branchController = require('./controllers/branch');
 const playerController = require('./controllers/player');
+const configurationController = require('./controllers/configuration');
 
 /**
  * API keys and Passport configuration.
@@ -180,6 +181,9 @@ app.get('/branches/:id/delete', passportConfig.isAuthenticated, branchController
 app.get('/players', passportConfig.isAuthenticated, playerController.getIndex);
 app.get('/players/:id', passportConfig.isAuthenticated, playerController.getPlayer);
 app.get('/players/:id/delete', passportConfig.isAuthenticated, playerController.deletePlayer);
+// Configuration
+app.get('/configuration', passportConfig.isAuthenticated, configurationController.getIndex);
+app.post('/configuration/update', passportConfig.isAuthenticated, configurationController.updateConfiguration);
 
 /**
  * API Routes

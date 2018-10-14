@@ -1,0 +1,112 @@
+extends layout
+
+block content
+  .row
+    .col-md-6
+      .card.card-user
+        .card-header
+          h5.card-title Seeding de Animales
+        .card-body
+          form(method="POST", action='/configuration/update')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label(for="habitatSelect") Foco de Riesgo
+                  select.form-control(name="habitat", required)
+                    option(disabled='') Selecciona un Foco de Riesgo...
+                    option(value="1") Animales de Bajo Riesgo
+                    option(value="2") Animales de Mediano Riesgo
+                    option(value="3") Animales de Alto Riesgo
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Mínimo por Jugador
+                  input.form-control(type='number', name="lat", step="1", min=0, required, value=12)
+              .col-md-6
+                .form-group
+                  label Máximo por Jugador
+                  input.form-control(type='number', name="long", step="1", min=1, required, value=120)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Límite de Generación por Sucursal
+                  input.form-control(type='number', name="capacity", step="1", required, value=500)
+            .row
+              .update.ml-auto.mr-auto
+                button.btn.btn-primary.btn-round(type='submit') Actualizar Parámetros de Seeding
+    .col-md-6
+      .card.card-user
+        .card-header
+          h5.card-title Interacción
+        .card-body
+          form(method="POST", action='/configuration/update')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Costo por Tiempo Inicial
+                  input.form-control(type='number', name="lat", step="0.01", required, value=1.3)
+              .col-md-6
+                .form-group
+                  label Costo por Tiempo Final
+                  input.form-control(type='number', name="long", step="0.01", required, value=7.3)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Puntos de Generación Mínimo
+                  input.form-control(type='number', name="lat", step="0.01", required, value=10 )
+              .col-md-6
+                .form-group
+                  label Puntos de Generación Máximo
+                  input.form-control(type='number', name="long", step="0.01", required, value=500)
+            .row
+              .update.ml-auto.mr-auto
+                button.btn.btn-info.btn-round(type='submit') Actualizar Parámetros de Interacción
+  .row
+    .col-md-12
+      .card.card-user
+        .card-header
+          h5.card-title Configuración General
+        .card-body
+          form(method="POST", action='/configuration/update')
+            input(type='hidden', name='_csrf', value=_csrf)
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label(for="habitatSelect") Status de Registro
+                  select.form-control(name="habitat", required)
+                    option(disabled='') Selecciona un status...
+                    option(value="1") Registro y Login abiertos
+                    option(value="2") Registro cerrado, Login abierto
+                    option(value="3") Registro cerrado, Login cerrado
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Nombre Fiscal
+                  input.form-control(type='text', name="lat", required, value="BBVA Bancomer, S.A.")
+              .col-md-6
+                .form-group
+                  label Dominios de Email Permitidos Registro
+                  input.form-control(type='text', name="long",  required, value="gmail.com, outlook.com, *.edu")
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label(for="habitatSelect") Periodo de Actualización de datos BBVA
+                  select.form-control(name="habitat", required)
+                    option(disabled='') Selecciona un periodo...
+                    option(value="1") Cada hora
+                    option(value="2") Cada 6 horas
+                    option(value="3") Cada día
+              .col-md-4
+                .form-group
+                  label Token BBVA Api Market
+                  input.form-control(type="text", name="token", value="haG45Fga7j.1GGGgj4j3low55ye38")
+            .row
+              .col-md-6.pr-1
+                .form-group
+                  label Dirección Fiscal de la Empresa
+                  input.form-control(type='text', name="capacity", required, value="Col Juárez, D.F., México, Paseo de la Reforma 510, Juárez, 06600 Ciudad de México, CDMX")
+            .row
+              .update.ml-auto.mr-auto
+                button.btn.btn-warning.btn-round(type='submit') Actualizar configuración General
