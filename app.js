@@ -179,6 +179,7 @@ app.get('/branches/:id/delete', passportConfig.isAuthenticated, branchController
 // Players
 app.get('/players', passportConfig.isAuthenticated, playerController.getIndex);
 app.get('/players/:id', passportConfig.isAuthenticated, playerController.getPlayer);
+app.get('/players/:id/delete', passportConfig.isAuthenticated, playerController.deletePlayer);
 
 /**
  * API Routes
