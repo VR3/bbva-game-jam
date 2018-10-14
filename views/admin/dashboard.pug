@@ -11,9 +11,8 @@ block content
                 i.nc-icon.nc-globe.text-warning
             .col-7.col-md-8
               .numbers
-                p.card-category Capacity
-                p.card-title
-                  | 150GB
+                p.card-category Usuarios
+                p.card-title=totalPlayers
                 p
         .card-footer
           hr
@@ -29,15 +28,15 @@ block content
                 i.nc-icon.nc-money-coins.text-success
             .col-7.col-md-8
               .numbers
-                p.card-category Revenue
+                p.card-category Sucursales BBVA
                 p.card-title
-                  | $ 1,345
+                  | 1,794
                 p
         .card-footer
           hr
           .stats
             i.fa.fa-calendar-o
-            |  Last day
+            |  Actualizado: 14/10/2018
     .col-lg-3.col-md-6.col-sm-6
       .card.card-stats
         .card-body
@@ -47,15 +46,15 @@ block content
                 i.nc-icon.nc-vector.text-danger
             .col-7.col-md-8
               .numbers
-                p.card-category Errors
+                p.card-category Animales Instanciados
                 p.card-title
-                  | 23
+                  | 467
                 p
         .card-footer
           hr
           .stats
             i.fa.fa-clock-o
-            |  In the last hour
+            |  Actualizado hace 5 minutos
     .col-lg-3.col-md-6.col-sm-6
       .card.card-stats
         .card-body
@@ -65,67 +64,68 @@ block content
                 i.nc-icon.nc-favourite-28.text-primary
             .col-7.col-md-8
               .numbers
-                p.card-category Followers
+                p.card-category Animales Rescatados
                 p.card-title
-                  | +45K
+                  | 338
                 p
         .card-footer
           hr
           .stats
             i.fa.fa-refresh
-            |  Update now
+            |  Actualizado hace 5 minutos
   .row
     .col-md-12
       .card
         .card-header
-          h5.card-title Users Behavior
-          p.card-category 24 Hours performance
+          h5.card-title Status de Juego
+          p.card-category Últimas 24 horas de comportamiento
         .card-body
           canvas#chartHours(width='400', height='100')
         .card-footer
+          .chart-legend
+            i.fa.fa-circle.text-info
+            |  Animales Relocados
+            i.fa.fa-circle.text-warning
+            |  Animales Entregados
           hr
           .stats
             i.fa.fa-history
-            |  Updated 3 minutes ago
+            |  Actualizado hace 32 minutos
   .row
     .col-md-4
       .card
         .card-header
-          h5.card-title Email Statistics
-          p.card-category Last Campaign Performance
+          h5.card-title Animales Instanciados
+          p.card-category Status Actual de los Animales
         .card-body
           canvas#chartEmail
         .card-footer
           .legend
             i.fa.fa-circle.text-primary
-            |  Opened
+            |  Entregados
             i.fa.fa-circle.text-warning
-            |  Read
+            |  Vistos
             i.fa.fa-circle.text-danger
-            |  Deleted
+            |  Almacenados
             i.fa.fa-circle.text-gray
-            |  Unopened
+            |  Sin ver
           hr
           .stats
             i.fa.fa-calendar
-            |  Number of emails sent
+            |  Datos para: 14/10/2018
     .col-md-8
       .card.card-chart
         .card-header
-          h5.card-title NASDAQ: AAPL
-          p.card-category Line Chart with Points
+          h5.card-title Interacciones
+          p.card-category Interacciones de las últimas 24 horas
         .card-body
           canvas#speedChart(width='400', height='100')
         .card-footer
           .chart-legend
             i.fa.fa-circle.text-info
-            |  Tesla Model S
+            |  Animales Relocados
             i.fa.fa-circle.text-warning
-            |  BMW 5 Series
-          hr
-          .card-stats
-            i.fa.fa-check
-            |  Data information certified
+            |  Animales Entregados
   script.
     $(document).ready(() => {
       demo.initChartsPages();
