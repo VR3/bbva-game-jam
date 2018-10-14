@@ -126,6 +126,7 @@ exports.getBranchLocations = (req, res) => {
       },
     },
   })
+    .populate('habitat')
     .exec()
     .then(branches => res.json({
       status: 'success',
